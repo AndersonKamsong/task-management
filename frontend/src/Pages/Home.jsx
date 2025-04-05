@@ -70,13 +70,23 @@ const Home = () => {
       {/* Update Status */}
       <div className="mb-8 bg-[#292929] p-6 rounded-2xl shadow-lg">
         <h2 className="text-2xl font-semibold mb-4">Update Task Status</h2>
-        <input
+        {/* <input
           type="text"
           placeholder="Task ID"
           className="block w-full p-2 mb-4 bg-[#1e1e1e] border border-[#f4d03f] rounded-lg"
           value={statusUpdate.id}
           onChange={(e) => setStatusUpdate({ ...statusUpdate, id: e.target.value })}
-        />
+        /> */}
+        <select
+          className="block w-full p-2 mb-4 bg-[#1e1e1e] border border-[#f4d03f] rounded-lg"
+          value={statusUpdate.id}
+          onChange={(e) => setStatusUpdate({ ...statusUpdate, id: e.target.value })}
+        >
+          <option value="">Select Status</option>
+          {tasks.map((task) => (
+            <option key={task._id} value={task._id} >{task.name}</option>
+          ))}
+        </select>
         <select
           className="block w-full p-2 mb-4 bg-[#1e1e1e] border border-[#f4d03f] rounded-lg"
           value={statusUpdate.status}
