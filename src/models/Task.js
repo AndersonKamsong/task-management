@@ -12,16 +12,9 @@ const taskSchema = new mongoose.Schema({
     startDate: {
         type: Date,
         required: true,
-        validate: {
-            validator: function (value) {
-                return value < this.endDate;
-            },
-            message: 'Start date must be before end date.'
-        }
     },
     endDate: {
         type: Date,
-        required: true,
         validate: {
             validator: function (value) {
                 return value > this.startDate;

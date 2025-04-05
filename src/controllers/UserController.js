@@ -44,13 +44,11 @@ class UserController {
                 password: password,
                 phoneNumber,
                 gender,
-                roles: roles || ['candidate'] // Default role is 'candidate'
+                roles: roles 
             });
 
-            // Save the user to the database
             await newUser.save();
 
-            // Return the created user (excluding sensitive fields)
             const userResponse = {
                 _id: newUser._id,
                 firstName: newUser.firstName,

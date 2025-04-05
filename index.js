@@ -5,6 +5,7 @@ import cors from "cors";
 // import notFound from "./src/middlewares/notFound.middleware.js";
 import connection from "./src/database/connection.database.mjs";
 import userRoutes from "./src/routes/userRoutes.js";
+import taskRoutes from "./src/routes/taskRoutes.js";
 import "express-async-errors";
 
 // Create Express app
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 
 // Register API routes
 app.use("/api/user", userRoutes);
+app.use("/api/task", taskRoutes);
 
 // Middleware for handling not found routes
 // app.use(notFound);
