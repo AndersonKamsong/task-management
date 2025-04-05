@@ -14,7 +14,7 @@ class TaskController {
     }
     async getAllUserTask(req, res) {
 
-        const tasks = await Task.find({ createdBy: "67f10296e56e7f73dd5e9300" });
+        const tasks = await Task.find({ createdBy: req.user._id });
         return res.status(201).json({ message: 'Tasks List.', tasks: tasks });
     }
     async createTask(req, res) {

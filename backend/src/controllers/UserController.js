@@ -111,7 +111,7 @@ class UserController {
                 { expiresIn: '24h' }
             );
             res.user = user.toJSON()
-            res.token = token
+            // res.token = token
             console.log(res.user?.roles);
             // req.body["roles"] = res.user?.roles
             res.json({ token, user: user.toJSON() });

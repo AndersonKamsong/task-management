@@ -30,7 +30,7 @@ const LoginForm = () => {
                 icon: 'success',
             });
             setTimeout(() => {
-                localStorage.setItem("user_token", JSON.stringify(result.User));
+                localStorage.setItem("user_token", JSON.stringify(result.token));
                 window.location = '/'
             }, 1000);
         } catch (error) {

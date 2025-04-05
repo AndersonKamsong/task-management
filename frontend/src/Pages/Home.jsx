@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import UserService from "../services/UserService";
+import React, { useEffect, useState } from "react";
+import TaskService from "../services/TaskService";
 import SweetAlert2 from 'react-sweetalert2';
 
 const HomePage = () => {
@@ -8,7 +8,23 @@ const HomePage = () => {
     const [error, setError] = useState(null);
     const [swalProps, setSwalProps] = useState({});
 
-
+    useEffect(()=>(
+        handleSubmit()
+    ))
+    
+    const handleSubmit = async (e) => {
+        try {
+            let result = await TaskService.getAllUserTask()
+            // console.log(result);
+            setTasks(result.tasks)
+            setTimeout(() => {
+            }, 1000);
+        } catch (error) {
+            window.location = '/login'
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-[#1e1e1e] text-[#f4d03f] flex items-center justify-center font-montserrat">
