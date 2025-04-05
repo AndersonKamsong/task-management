@@ -19,9 +19,9 @@ class UserController {
                 lastName,
                 email,
                 password,
-                phoneNumber,
-                dateOfBirth,
-                gender,
+                // phoneNumber,
+                // dateOfBirth,
+                // gender,
                 roles
             } = req.body;
 
@@ -42,8 +42,8 @@ class UserController {
                 lastName,
                 email,
                 password: password,
-                phoneNumber,
-                gender,
+                // phoneNumber,
+                // gender,
                 roles: roles 
             });
 
@@ -54,9 +54,9 @@ class UserController {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 email: newUser.email,
-                phoneNumber: newUser.phoneNumber,
-                dateOfBirth: newUser.dateOfBirth,
-                gender: newUser.gender,
+                // phoneNumber: newUser.phoneNumber,
+                // dateOfBirth: newUser.dateOfBirth,
+                // gender: newUser.gender,
                 roles: newUser.roles,
                 createdAt: newUser.createdAt,
                 updatedAt: newUser.updatedAt
