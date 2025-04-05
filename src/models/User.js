@@ -4,7 +4,6 @@ import mongoose from'mongoose';
 import bcrypt  from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-  
   firstName: {
     type: String,
     required: true,
@@ -36,20 +35,19 @@ const userSchema = new mongoose.Schema({
     trim: true,
     match: [/^\+?[0-9]{7,15}$/, 'Invalid phone number format']
   },
-  dateOfBirth: {
-    type: Date,
-    required: true
-  },
   gender: {
     type: String,
     enum: ['male', 'female', 'other']
+  },
+  roles: {
+    type: String,
+    enum: ['admin', 'users']
   },
   security: {
     twoFactorEnabled: { type: Boolean, default: false },
     loginAttempts: { type: Number, default: 0, select: false },
     lockUntil: { type: Date, select: false }
   },
-
   // Account status and activity tracking.
   status: {
     type: String,

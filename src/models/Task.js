@@ -9,18 +9,37 @@ const taskSchema = new mongoose.Schema({
         minlength: 2,
         maxlength: 100
     },
-    date: {
+    startDate: {
         type: Date,
-        required: true
+        required: true,
+        validate: {
+            validator: function (value) {
+                return value < this.endDate;
+            },
+            message: 'Start date must be before end date.'
+        }
     },
-    // Account status and activity tracking.
+    endDate: {
+        type: Date,
+        required: true,
+        validate: {
+            validator: function (value) {
+                return value > this.startDate;
+            },
+            message: 'End date must be after start date.'
+        }
+    },
     status: {
         type: String,
         enum: ['created', 'doing', 'done', 'cancel'],
         default: 'created'
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // Tracks user who created it
     }
-});
+}, { timestamps: true });
 
-const Task = mongoose.model('Task',taskSchema);
+const Task = mongoose.model('Task', taskSchema);
 
 export default Task;
